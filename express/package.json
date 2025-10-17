@@ -1,0 +1,35 @@
+{
+  "name": "express-n8n-proxy",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+"scripts": {
+  "dev": "nodemon --legacy-watch --watch src --ext ts,tsx --exec \"npm run build && node dist/server.js\"",
+  "build": "tsc && esbuild src/client/main.tsx --bundle --format=esm --outfile=public/assets/app.js --loader:.tsx=tsx --jsx=automatic && tailwindcss -i ./src/client/index.css -o ./public/assets/styles.css --minify",
+  "start": "node dist/server.js"
+},
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "nodemon": "^3.0.1",
+    "@types/react": "^18.3.7",
+    "@types/react-dom": "^18.3.0",
+    "@types/cors": "^2.8.17",
+    "@types/morgan": "^1.9.9",
+    "@types/express": "^4.17.21",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^20.11.30",
+    "@types/uuid": "^9.0.7",
+    
+    "typescript": "^5.6.3"
+  }
+}

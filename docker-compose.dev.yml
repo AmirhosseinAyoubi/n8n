@@ -1,0 +1,30 @@
+services:
+  express:
+    build:
+      context: ./express
+    environment:
+      - NODE_ENV=development
+      - N8N_URL=http://n8n:5678
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=300
+      - TSC_WATCHFILE=dynamicpolling
+    command: npm run dev
+    volumes:
+      - ./express:/app
+      - express_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+
+  flask:
+    build: ./flask
+    environment:
+      - FLASK_ENV=development
+    command: python app.py
+    volumes:
+      - ./flask:/app
+    ports:
+      - "5000:5000"
+
+volumes:
+  express_node_modules:
+

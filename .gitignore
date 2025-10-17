@@ -1,0 +1,7 @@
+
+express/node_modules/
+express/dist/
+express/public/assets/
+
+flask/__pycache__/
+flask/*.pyc
